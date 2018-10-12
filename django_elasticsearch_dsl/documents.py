@@ -222,6 +222,9 @@ class DocType(DSLDocType):
         ):
             kwargs['refresh'] = True
 
+        if self._doc_type.queryset_pagination is not None:
+            kwargs['chunk_size'] = self._doc_type.queryset_pagination
+
         if isinstance(thing, models.Model):
             object_list = [thing]
         else:
